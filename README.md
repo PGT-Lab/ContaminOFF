@@ -92,14 +92,14 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 | `-p`, `--prefix` | Output prefix (Ignored in Multi Mode) | `contaminoff_out` |
 | **Tuning & QC** | | |
 | `--taxid` | Target TaxID to keep (default is *Homo sapiens*) | `9606` |
-| `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S) | `S` (Species) |
+| `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S) | `G` (Genus) |
 | `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
 | `--keep-kraken` | Flag to prevent deletion of the massive `.kraken` file | False |
 
 ## Citation
 
 If you use ContaminOFF in your research, please cite our upcoming paper:
-Centurion VB et al., ContaminOFF: Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data
+*Centurion VB et al., ContaminOFF: Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data
 
 ## License and Third-Party Software
 
