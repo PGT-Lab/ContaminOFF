@@ -16,7 +16,7 @@ We provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific
 
 **Download the ContaminOFF Saliva Database:**
 ```bash
-wget [https://figshare.com/articles/dataset/ContaminOFF_saliva_microbiome_and_Homo_sapiens_database_for_kraken2_/31460278](https://figshare.com/articles/dataset/ContaminOFF_saliva_microbiome_and_Homo_sapiens_database_for_kraken2_/31460278)
+wget https://figshare.com/articles/dataset/ContaminOFF_saliva_microbiome_and_Homo_sapiens_database_for_kraken2_/31460278
 tar -xzvf contaminoff_db.tar.gz
 ```
 
