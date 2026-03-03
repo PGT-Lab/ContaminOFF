@@ -25,9 +25,64 @@ ContaminOFF requires the following tools to be accessible in your system's PATH:
 ```bash
 conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
 conda activate contaminoff_env
+```
 
+## 🚀 Quick Start & Usage
 
+ContaminOFF offers two flexible ways to process your data, depending on your pipeline needs. Both modes support all taxonomic tuning and plotting flags.
 
+### 1. Single-Sample Mode
+Use this mode to process a specific pair of paired-end FASTQ files.
+```bash
+python contaminoff.py \
+    -r1 WC-001_R1.fq.gz \
+    -r2 WC-001_R2.fq.gz \
+    -o ./clean_results \
+    -d /path/to/ContaminOFF_DB \
+    -t 16 \
+    -p WC-001_report \
+    --tax-level G \
+    --top-taxa 15
+```
 
+### 2. Multi-Sample (Batch) Mode
+Point ContaminOFF to a directory, and it will automatically find all paired `_R1`/`_R2` (or `_1`/`_2`) files and process them sequentially without overflowing your RAM.
+```bash
+python contaminoff.py \
+    -i /path/to/raw_fastq_folder/ \
+    -o ./clean_cohort_results \
+    -d /path/to/ContaminOFF_DB \
+    -t 16 \
+    --tax-level S
+```
+
+## 📂 Expected Output
+For every sample processed, ContaminOFF generates four optimized files in your output directory:
+1. **`*_clean_R1.fq.gz` & `*_clean_R2.fq.gz`**: The filtered, purely human FASTQ files, highly compressed via `pigz`.
+2. **`*.report`**: The standard Kraken2 taxonomic report.
+3. **`*_summary.tsv`**: A data table containing the exact percentage of Human, Bacteria, and Unclassified reads, plus the absolute number of extracted reads.
+4. **`*_QC_plots.png`**: A publication-ready image containing a composition pie chart and a bar plot of the top contaminating taxa.
+
+## ⚙️ Command-Line Arguments
+
+| Argument | Description | Default |
+| :--- | :--- | :--- |
+| **Input Modes** | *(Must choose one)* | |
+| `-r1`, `--read1` | Input FASTQ R1 (.gz) [Single Mode] | - |
+| `-i`, `--input-dir` | Directory containing FASTQ pairs (.gz) [Multi Mode] | - |
+| **Core Arguments** | | |
+| `-r2`, `--read2` | Input FASTQ R2 (.gz) [Required if using `-r1`] | - |
+| `-o`, `--out-dir` | Output directory for clean FASTQs and reports | **Required** |
+| `-d`, `--db` | Path to your Kraken2 database | **Required** |
+| `-t`, `--threads` | Number of CPU threads to use | `8` |
+| `-p`, `--prefix` | Output prefix (Ignored in Multi Mode) | `contaminoff_out` |
+| **Tuning & QC** | | |
+| `--taxid` | Target TaxID to keep (default is *Homo sapiens*) | `9606` |
+| `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S) | `S` (Species) |
+| `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
+| `--keep-kraken` | Flag to prevent deletion of the massive `.kraken` file | False |
+
+## 📖 Citation
+If you use ContaminOFF in your research, please cite our upcoming paper:
 conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
 conda activate contaminoff_env
