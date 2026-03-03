@@ -8,9 +8,7 @@ ContaminOFF is a high-performance Python tool designed to rapidly identify and r
 By coupling Kraken2's taxonomic classification with highly optimized, byte-level I/O processing using `pigz`, ContaminOFF extracts target sequences (e.g., *Homo sapiens*) up to 4x faster than standard parsing tools. It minimizes RAM usage and saves days of computational time when processing large cohorts.
 
 ## 🧬 The ContaminOFF Saliva Database
-Standard Kraken2 databases often suffer from cross-reactivity, where regions of the human genome falsely match bacterial k-mers, leading to the accidental deletion of valuable patient data. 
-
-To solve this, we provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific database tailored for the oral/salivary microbiome. 
+We provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific database tailored for the oral/salivary microbiome. 
 * **Zero Human Cross-Talk:** Masked against the human reference genome to prevent false-positive bacterial assignments.
 * **Lightweight & Fast:** Contains only the essential clinically relevant taxa found in oral environments, drastically reducing RAM requirements during classification.
 
