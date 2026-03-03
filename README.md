@@ -1,14 +1,18 @@
-# <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="250" align="left"/> ContaminOFF
+# <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="150" align="left"/> ContaminOFF
 **Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
 <br clear="left"/>
 <br>
 
-# ContaminOFF
-**Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
-
 ContaminOFF is a high-performance Python tool designed to rapidly identify and remove bacterial contamination from human whole-genome sequencing (WGS) data, specifically optimized for high-noise sources like saliva samples. 
 
 By coupling Kraken2's taxonomic classification with highly optimized, byte-level I/O processing using `pigz`, ContaminOFF extracts target sequences (e.g., *Homo sapiens*) up to 4x faster than standard parsing tools. It minimizes RAM usage and saves days of computational time when processing large cohorts.
+
+## 🧬 The ContaminOFF Saliva Database
+Standard Kraken2 databases often suffer from cross-reactivity, where regions of the human genome falsely match bacterial k-mers, leading to the accidental deletion of valuable patient data. 
+
+To solve this, we provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific database tailored for the oral/salivary microbiome. 
+* **Zero Human Cross-Talk:** Masked against the human reference genome to prevent false-positive bacterial assignments.
+* **Lightweight & Fast:** Contains only the essential clinically relevant taxa found in oral environments, drastically reducing RAM requirements during classification.
 
 ## Key Features
 * ⚡ **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
