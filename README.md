@@ -14,7 +14,7 @@ We provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific
 * **Zero Human Cross-Talk:** Masked against the human reference genome to prevent false-positive bacterial assignments.
 * **Lightweight & Fast:** Contains only the essential clinically relevant taxa found in oral environments, drastically reducing RAM requirements during classification.
 
-** Download the ContaminOFF Saliva Database:**
+**Download the ContaminOFF Saliva Database:**
 ```bash
 wget [https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz](https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz)
 tar -xzvf contaminoff_saliva_db.tar.gz
