@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="slogan_contaminoff_transparent.jpg" alt="ContaminOFF Logo" width="600"/>
+  <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="600"/>
 </p>
 
 # ContaminOFF
