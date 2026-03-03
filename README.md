@@ -8,6 +8,7 @@ ContaminOFF is a high-performance Python tool designed to rapidly identify and r
 By coupling Kraken2's taxonomic classification with highly optimized, byte-level I/O processing using `pigz`, ContaminOFF extracts target sequences (e.g., *Homo sapiens*) up to 4x faster than standard parsing tools. It minimizes RAM usage and saves days of computational time when processing large cohorts.
 
 ## 🧬 The ContaminOFF Saliva Database
+
 We provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific database tailored for the oral/salivary microbiome. 
 * **Zero Human Cross-Talk:** Masked against the human reference genome to prevent false-positive bacterial assignments.
 * **Lightweight & Fast:** Contains only the essential clinically relevant taxa found in oral environments, drastically reducing RAM requirements during classification.
@@ -19,11 +20,13 @@ tar -xzvf contaminoff_saliva_db.tar.gz
 ```
 
 ## Key Features
-* ⚡ **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
-* 🔄 **Dual Processing Modes:** Process a single sample pair or automatically batch-process an entire directory of FASTQ files.
-* 📊 **Automated QC Reporting:** Generates high-resolution composition pie charts, taxonomic abundance bar plots, and TSV summaries.
+
+* **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
+* **Dual Processing Modes:** Process a single sample pair or automatically batch-process an entire directory of FASTQ files.
+* **Automated QC Reporting:** Generates high-resolution composition pie charts, taxonomic abundance bar plots, and TSV summaries.
 
 ## Dependencies
+
 ContaminOFF requires the following tools to be accessible in your system's PATH:
 * `kraken2`
 * `pigz`
@@ -93,6 +96,22 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 | `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
 | `--keep-kraken` | Flag to prevent deletion of the massive `.kraken` file | False |
 
-## 📖 Citation
+## Citation
+
 If you use ContaminOFF in your research, please cite our upcoming paper:
 Centurion VB et al., ContaminOFF: Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data
+
+## License and Third-Party Software
+
+ContaminOFF is distributed under a GPL-3 license. Additionally, ContaminOFF relies on the following third-party software and libraries to function:
+* [Kraken2](https://ccb.jhu.edu/software/kraken2/)
+* [pigz](https://zlib.net/pigz/)
+* [Pandas](https://pandas.pydata.org/)
+* [Matplotlib](https://matplotlib.org/)
+* [Seaborn](https://seaborn.pydata.org/)
+
+## Appreciation
+
+This tool was developed by the Psychiatric Genetics Team (PGT) at the Universidade Federal de São Paulo (UNIFESP) as part of the research for the **Brazilian High-Risk Cohort (BHRC)** project.
+
+This work was supported by the **São Paulo Research Foundation (FAPESP)** under grant numbers: **2021/05332-8** and **2025/02111-1**.
