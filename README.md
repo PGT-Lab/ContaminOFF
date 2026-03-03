@@ -1,6 +1,9 @@
-<p align="center">
-  <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="200"/>
-</p> # ContaminOFF
+# <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="100" align="left"/> ContaminOFF
+**Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
+<br clear="left"/>
+<br>
+
+# ContaminOFF
 **Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
 
 ContaminOFF is a high-performance Python tool designed to rapidly identify and remove bacterial contamination from human whole-genome sequencing (WGS) data, specifically optimized for high-noise sources like saliva samples. 
