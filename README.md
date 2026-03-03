@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="600"/>
-</p>
-
-# ContaminOFF
+  <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="200"/>
+</p> # ContaminOFF
 **Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
 
 ContaminOFF is a high-performance Python tool designed to rapidly identify and remove bacterial contamination from human whole-genome sequencing (WGS) data, specifically optimized for high-noise sources like saliva samples. 
@@ -24,6 +22,11 @@ ContaminOFF requires the following tools to be accessible in your system's PATH:
 ```bash
 conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
 conda activate contaminoff_env
+```
+** Download the ContaminOFF Saliva Database:**
+```bash
+wget [https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz](https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz)
+tar -xzvf contaminoff_saliva_db.tar.gz
 ```
 
 ## Quick Start & Usage
@@ -86,5 +89,4 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 
 ## 📖 Citation
 If you use ContaminOFF in your research, please cite our upcoming paper:
-conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
-conda activate contaminoff_env
+Centurion VB et al., ContaminOFF: Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data
