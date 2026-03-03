@@ -12,6 +12,12 @@ We provide the **ContaminOFF Saliva DB** — a strictly curated, highly specific
 * **Zero Human Cross-Talk:** Masked against the human reference genome to prevent false-positive bacterial assignments.
 * **Lightweight & Fast:** Contains only the essential clinically relevant taxa found in oral environments, drastically reducing RAM requirements during classification.
 
+** Download the ContaminOFF Saliva Database:**
+```bash
+wget [https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz](https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz)
+tar -xzvf contaminoff_saliva_db.tar.gz
+```
+
 ## Key Features
 * ⚡ **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
 * 🔄 **Dual Processing Modes:** Process a single sample pair or automatically batch-process an entire directory of FASTQ files.
@@ -27,11 +33,6 @@ ContaminOFF requires the following tools to be accessible in your system's PATH:
 ```bash
 conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
 conda activate contaminoff_env
-```
-** Download the ContaminOFF Saliva Database:**
-```bash
-wget [https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz](https://github.com/yourusername/ContaminOFF/releases/download/v1.0/contaminoff_saliva_db.tar.gz)
-tar -xzvf contaminoff_saliva_db.tar.gz
 ```
 
 ## Quick Start & Usage
