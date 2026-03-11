@@ -35,8 +35,8 @@ ContaminOFF requires the following tools to be accessible in your system's PATH:
 
 **Quick Conda Installation:**
 ```bash
-conda create -n contaminoff_env -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
-conda activate contaminoff_env
+conda create -n contaminoff -c conda-forge -c bioconda kraken2 pigz pandas matplotlib seaborn python
+conda activate contaminoff
 ```
 
 ## Quick Start & Usage
