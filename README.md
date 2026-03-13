@@ -96,7 +96,7 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 | `-p`, `--prefix` | Output prefix (Ignored in Multi Mode) | `contaminoff_out` |
 | **Tuning & QC** | | |
 | `-id`, `--taxid` | Target TaxID to keep (default is *Homo sapiens*) | `9606` |
-| `-l`, `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S), you can use more than one level (eg. C F G) | `G` (Genus) |
+| `-l`, `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S), you can use more than one (eg. C F G) | `G` (Genus) |
 | `-n`, `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
 | `--keep-kraken` | Flag to prevent deletion of the massive `.kraken` file | False |
 
