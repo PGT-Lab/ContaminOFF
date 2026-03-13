@@ -78,7 +78,8 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 1. **`*_clean_R1.fq.gz` & `*_clean_R2.fq.gz`**: The filtered, purely human FASTQ files, highly compressed via `pigz`.
 2. **`*.report`**: The standard Kraken2 taxonomic report.
 3. **`*_summary.tsv`**: A data table containing the exact percentage of Human, Bacteria, and Unclassified reads, plus the absolute number of extracted reads.
-4. **`*_QC_plots.png`**: A image containing a composition pie chart and a bar plot of the top contaminating taxa.
+4. **`*_QC_composition/contaminants.png`**: Figures containing a composition pie chart and bar plots of the top (-n) contaminating taxa.
+5. **`contaminants_table.tsv`**: A comprehensive taxonomic abundance matrix (Samples as columns, Taxonomy lineages as rows), perfectly formatted for downstream microbiome analysis.
 
 ## Command-Line Arguments
 
