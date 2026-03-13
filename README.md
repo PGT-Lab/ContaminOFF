@@ -23,6 +23,7 @@ tar -xzvf contaminoff_db.tar.gz
 ## Key Features
 
 * **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
+* **Low RAM Footprint:** Highly optimized memory usage, ideal for large cohorts and HPC environments.
 * **Dual Processing Modes:** Process a single sample pair or automatically batch-process an entire directory of FASTQ files.
 * **Automated QC Reporting:** Generates high-resolution composition pie charts, taxonomic abundance bar plots, and TSV summaries.
 
@@ -55,8 +56,8 @@ python contaminoff.py \
     -d /path/to/ContaminOFF_DB \
     -t 16 \
     -p WC-001_report \
-    --tax-level G \
-    --top-taxa 20
+    -l C F G \
+    -n 20
 ```
 
 ### 2. Multi-Sample (Batch) Mode
@@ -67,8 +68,9 @@ python contaminoff.py \
     -o ./clean_cohort_results \
     -d /path/to/ContaminOFF_DB \
     -t 16 \
-    --tax-level G
-    --top-taxa 20
+    -id 9606
+    -l C F G \
+    -n 20
 ```
 
 ## Expected Output
@@ -92,9 +94,9 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 | `-t`, `--threads` | Number of CPU threads to use | `8` |
 | `-p`, `--prefix` | Output prefix (Ignored in Multi Mode) | `contaminoff_out` |
 | **Tuning & QC** | | |
-| `--taxid` | Target TaxID to keep (default is *Homo sapiens*) | `9606` |
-| `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S) | `G` (Genus) |
-| `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
+| `-id`, `--taxid` | Target TaxID to keep (default is *Homo sapiens*) | `9606` |
+| `-l`, `--tax-level` | Taxonomic level for the QC bar plot (D, P, C, O, F, G, S), you can use more than one level (eg. C F G) | `G` (Genus) |
+| `-n`, `--top-taxa` | Number of top contaminants to show in the QC plot | `10` |
 | `--keep-kraken` | Flag to prevent deletion of the massive `.kraken` file | False |
 
 ## Citation
