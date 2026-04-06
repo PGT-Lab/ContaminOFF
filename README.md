@@ -1,5 +1,5 @@
 # <img src="contaminoff_figure.png" alt="ContaminOFF Logo" width="100" align="left"/> ContaminOFF
-**Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data**
+**Ultra-Fast WGS Contamination Filter for Human Sequencing Data**
 <br clear="left"/>
 <br>
 
