@@ -20,6 +20,20 @@ wget https://figshare.com/articles/dataset/ContaminOFF_saliva_microbiome_and_Hom
 tar -xzvf contaminoff_db.tar.gz
 ```
 
+## Contribute to the ContaminOFF Database
+
+Public databases often miss cohort-specific bacterial strains. If you performed metagenomic binning on your WGS data, you can add your unique Metagenome-Assembled Genomes (MAGs) to our database. 
+
+By sharing your MAGs, you help reduce unclassified reads and improve variant calling accuracy for the whole community.
+
+### How to submit your Metagenomic-Assembly Genomes (MAGs):
+
+1. **Check Quality:** Ensure your MAGs have good quality (Completeness > 50%, Contamination < 10%).
+2. **Send an Email:** Reach out to **victor.borin@unifesp.br** with the subject *"MAG Contribution - ContaminOFF"*.
+3. **Provide Details:** Include a brief description of your cohort (e.g., sample type, country) and attach the `.fasta` files.
+
+> **Note:** We will process the human-masking step and perform technical dereplication. Your strains will be added to the next database release, and you will be fully credited as a contributor!
+
 ## Key Features
 
 * **Ultra-Fast I/O:** Bypasses standard Python text-parsing bottlenecks by using multithreaded `pigz` and byte-level matching ($O(1)$ complexity).
