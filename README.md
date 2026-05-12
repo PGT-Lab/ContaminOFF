@@ -117,7 +117,7 @@ For every sample processed, ContaminOFF generates four optimized files in your o
 ## Citation
 
 If you use ContaminOFF in your research, please cite our upcoming paper:
-*Centurion VB et al., ContaminOFF: Ultra-Fast Metagenomic Contamination Filter for Human Sequencing Data
+*In Review*
 
 ## License and Third-Party Software
 
