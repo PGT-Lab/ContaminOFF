@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-ContaminOFF: Ultra-Fast Metagenomic Contamination Filter
+ContaminOFF: Fast Metagenomic Contamination Filter
 Developed for human sequencing data (WGS), specifically targeting saliva and high-noise samples.
 """
 
@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="ContaminOFF: Ultra-Fast Metagenomic Contamination Filter")
+    parser = argparse.ArgumentParser(description="ContaminOFF: Fast Metagenomic Contamination Filter")
     
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-r1', '--read1', help="Input FASTQ R1 (.gz) [Single Mode]")
@@ -261,7 +261,6 @@ def main():
             print("[ERROR] -r2/--read2 is required in single-sample mode.")
             sys.exit(1)
             
-        # Extrator automático de ID no Single Mode
         if args.prefix is None:
             prefix = os.path.basename(args.read1).split('_R1')[0].split('_1')[0]
             prefix = prefix.replace('.fastq.gz', '').replace('.fq.gz', '')
