@@ -64,12 +64,12 @@ def extract_target_reads(kraken_out, target_taxid):
 def filter_fastq_pigz(r1_in, r2_in, r1_out, r2_out, valid_ids, threads):
     print(f"[*] Filtering FASTQ files using high-speed pigz I/O...")
     
-    p1_in = subprocess.Popen(['pigz', '-dc', r1_in], stdout=subprocess.PIPE)
-    p2_in = subprocess.Popen(['pigz', '-dc', r2_in], stdout=subprocess.PIPE)
+    p1_in = subprocess.Popen(['pigz', '-dc', r1_in], stdout=subprocess.PIPE, bufsize=8388608)
+    p2_in = subprocess.Popen(['pigz', '-dc', r2_in], stdout=subprocess.PIPE, bufsize=8388608)
     
     t_out = str(max(1, threads // 2))
-    p1_out = subprocess.Popen(['pigz', '-p', t_out, '-c'], stdin=subprocess.PIPE, stdout=open(r1_out, 'wb'))
-    p2_out = subprocess.Popen(['pigz', '-p', t_out, '-c'], stdin=subprocess.PIPE, stdout=open(r2_out, 'wb'))
+    p1_out = subprocess.Popen(['pigz', '-p', t_out, '-c'], stdin=subprocess.PIPE, stdout=open(r1_out, 'wb'), bufsize=8388608)
+    p2_out = subprocess.Popen(['pigz', '-p', t_out, '-c'], stdin=subprocess.PIPE, stdout=open(r2_out, 'wb'), bufsize=8388608)
     
     while True:
         id1 = p1_in.stdout.readline()
@@ -83,7 +83,7 @@ def filter_fastq_pigz(r1_in, r2_in, r1_out, r2_out, valid_ids, threads):
         plus2 = p2_in.stdout.readline()
         qual2 = p2_in.stdout.readline()
         
-        read_id = id1.split(b' ')[0].split(b'/')[0][1:]
+        read_id = id1.split(b' ')[0].split(b'/')[0].split(b'.')[0][1:]
         
         if read_id in valid_ids:
             p1_out.stdin.write(id1 + seq1 + plus1 + qual1)
@@ -273,10 +273,11 @@ def main():
     elif args.input_dir:
         print(f"[*] Initializing Batch Mode in directory: {args.input_dir}")
         search_pattern = os.path.join(args.input_dir, "*_R1*.fq.gz")
-        r1_files = glob.glob(search_pattern)
+        r1_files = [f for f in glob.glob(search_pattern) if "_clean_" not in f]
+        
         if not r1_files:
             search_pattern = os.path.join(args.input_dir, "*_1*.fastq.gz")
-            r1_files = glob.glob(search_pattern)
+            r1_files = [f for f in glob.glob(search_pattern) if "_clean_" not in f]
             
         for r1 in sorted(r1_files):
             r2 = r1.replace('_R1', '_R2').replace('_1.fastq.gz', '_2.fastq.gz')
