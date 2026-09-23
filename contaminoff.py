@@ -272,12 +272,31 @@ def main():
         
     elif args.input_dir:
         print(f"[*] Initializing Batch Mode in directory: {args.input_dir}")
-        search_pattern = os.path.join(args.input_dir, "*_R1*.fq.gz")
-        r1_files = [f for f in glob.glob(search_pattern) if "_clean_" not in f]
         
-        if not r1_files:
-            search_pattern = os.path.join(args.input_dir, "*_1*.fastq.gz")
-            r1_files = [f for f in glob.glob(search_pattern) if "_clean_" not in f]
+        r1_patterns = [
+            "*_R1*.fastq.gz", "*_R1*.fq.gz", 
+            "*_1*.fastq.gz", "*_1*.fq.gz"
+        ]
+        
+        r1_files = []
+        for pat in r1_patterns:
+            search_pattern = os.path.join(args.input_dir, pat)
+            r1_files.extend([f for f in glob.glob(search_pattern) if "_clean_" not in f])
+            
+        r1_files = list(set(r1_files))
+            
+        for r1 in sorted(r1_files):
+            r2 = r1.replace('_R1.fastq.gz', '_R2.fastq.gz') \
+                   .replace('_R1.fq.gz', '_R2.fq.gz') \
+                   .replace('_1.fastq.gz', '_2.fastq.gz') \
+                   .replace('_1.fq.gz', '_2.fq.gz')
+            
+            if os.path.exists(r2):
+                prefix = os.path.basename(r1).split('_R1')[0].split('_1')[0].replace('.fastq.gz', '').replace('.fq.gz', '')
+                process_sample(r1, r2, prefix, args)
+                processed_prefixes.append(prefix)
+            else:
+                print(f"[WARNING] Could not find matching R2 for {r1}. Skipping.")
             
         for r1 in sorted(r1_files):
             r2 = r1.replace('_R1', '_R2').replace('_1.fastq.gz', '_2.fastq.gz')
